@@ -1,0 +1,40 @@
+.predictionscontainer {
+  display: flex;
+  gap: 20px;
+  width: 1200px;
+  min-width: 1000px;
+  margin: 0 auto;
+}
+.infoTitle {
+  margin-left: 20px;
+  font-size: 24px;
+  margin-top: 40px;
+  font-weight: bold;
+  align-items: start;
+  display: flex;
+}
+
+.borderline {
+  height: 2px;
+  width: 70px;
+  display: flex;
+  margin-left: 20px;
+  margin-top: 3px;
+  margin-bottom: 30px;
+  background-color: rgb(192, 192, 192);
+}
+.predictionscontainer2 {
+  width: 1200px;
+  max-width: 1200px;
+  padding: 20px;
+  min-width: 1200px;
+  margin: 0 auto;
+}
+
+.predictionsleftSection {
+  width: 70%;
+}
+
+.predictionsrightSection {
+  width: 30%;
+}

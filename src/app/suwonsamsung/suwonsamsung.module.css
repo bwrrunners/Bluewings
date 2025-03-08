@@ -1,0 +1,7 @@
+.suwoncontainer {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 100px;
+    justify-content: center;
+    display: flex;
+}

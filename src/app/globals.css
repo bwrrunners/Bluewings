@@ -1,0 +1,24 @@
+@import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css");
+
+/* 전역 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body 기본 폰트 등 설정 */
+body {
+  font-family: 'NanumSquareNeoLight';  background-color: #fafafa;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}

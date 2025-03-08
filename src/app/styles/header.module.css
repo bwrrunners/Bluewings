@@ -1,0 +1,83 @@
+.header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 1400px;
+  padding: 15px 20px;
+  background: #0070f3;
+  color: white;
+}
+.headersection {
+  display: flex;
+  width: 1200px;
+  min-width: 1200px;
+  max-width: 1200px;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.banner {
+  align-items: center;
+  display: flex;
+}
+
+.bannersection {
+  margin-left: 80px;
+  display: flex;
+  font-size: 15px;
+  gap: 50px;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* nav a - CSS 모듈에서 태그 선택 시, 
+   .nav a 로 접근하면 
+   'pure selector' 오류가 날 수 있으니
+   아래처럼 nesting or className 활용 */
+.nav :global(a) {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nickname {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.nav button {
+  background: transparent;
+  border: 1px solid white;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.nav button:hover {
+  background: linear-gradient(135deg, #fcecff 0%, #e7f3ff 100%);
+  border: 1px solid #0061cf;
+  color: #0061cf;
+}
