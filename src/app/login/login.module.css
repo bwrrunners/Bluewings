@@ -57,3 +57,19 @@
   color: #0070f3;
   text-decoration: underline;
 }
+
+@media (max-width: 1279px)  {  .registerLink {
+    margin-top: 25px;
+    font-size: 14px;
+  }
+  
+  .registerLink p {
+    margin-bottom: 5px;
+  }
+  
+  .registerLink :global(a) {
+    color: #0070f3;
+    text-decoration: underline;
+  }
+  
+}

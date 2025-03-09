@@ -126,7 +126,7 @@ export default function InfoPage() {
       <div className={styles.borderline}></div>
       {/* 탭 메뉴 */}
       <div className={styles.tabMenu}>
-        {["전체", "알림", "공지사항"].map((tab) => (
+        {["전체", "알림", "공지"].map((tab) => (
           <span
             key={tab}
             className={`${styles.tabItem} ${
@@ -149,7 +149,7 @@ export default function InfoPage() {
             className={styles.selectBox}
           >
             <option value="알림">알림</option>
-            <option value="공지사항">공지사항</option>
+            <option value="공지">공지</option>
           </select>
           <input
             type="text"
@@ -200,11 +200,11 @@ export default function InfoPage() {
         <table className={styles.noticeTable}>
           <thead>
             <tr>
-              <th style={{ width: "60px" }}>번호</th>
-              <th style={{ width: "100px" }}>구분</th>
-              <th>제목</th>
-              <th style={{ width: "120px" }}>작성자</th>
-              <th style={{ width: "120px" }}>작성일</th>
+            <th style={{ width: "30px" }}>번호</th>
+              <th style={{ width: "40px" }}>구분</th>
+              <th style={{ width: "300px"}}>제목</th>
+              <th style={{ width: "20px" }}>작성자</th>
+              <th style={{ width: "50px" }}>작성일</th>
             </tr>
           </thead>
           <tbody>

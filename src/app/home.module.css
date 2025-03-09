@@ -9,7 +9,6 @@
 }
 
 .container2 {
-
   display: flex;
   gap: 20px;
   width: 1200px;
@@ -21,7 +20,7 @@
 
 /* 왼쪽 / 오른쪽 구역 */
 .leftSection {
-  flex: 2.0;
+  flex: 2;
 }
 
 .mainphotosection {
@@ -29,7 +28,6 @@
   margin: 0 auto;
   display: flex;
   width: 100%;
-
 }
 
 .rightSection {
@@ -61,7 +59,7 @@
 }
 .matchCard:hover {
   transform: scale(1.03);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .matchstatus {
@@ -105,4 +103,95 @@
 
 .predictButton:hover {
   background: #005bb5;
+}
+
+@media (max-width: 1279px) {
+  .container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+
+    padding: 5px;
+  }
+
+  .container2 {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    flex-direction: column;
+    margin: 20px auto;
+  }
+
+  /* 왼쪽 / 오른쪽 구역 */
+  .leftSection {
+    flex: 1;
+  }
+
+  .mainphotosection {
+    justify-content: center;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .rightSection {
+    flex: none;
+    background: #f9f9f9;
+    padding: 0px;
+    border-radius: 10px;
+  }
+  .cardsection {
+    border-radius: 10px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 2개 열 */
+    gap: 20px; /* 카드 간격 */
+  }
+  .matchCard {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* 파스텔 그라데이션 */
+    background: linear-gradient(135deg, #fcecff 0%, #e7f3ff 100%);
+  }
+  .matchCard:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .matchstatus {
+    width: 100%;
+    font-size: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* 매치 팀명 */
+  .matchTeams {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 30px;
+  }
+
+  /* 진행중 상태 */
+  .matchStatus {
+    color: #0070f3;
+  }
 }

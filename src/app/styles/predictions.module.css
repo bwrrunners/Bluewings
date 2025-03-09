@@ -291,3 +291,279 @@
   height: 2px;
   background-color: rgb(231, 231, 231);
 }
+
+@media (max-width: 1279px)  {  /********** Predictions Layout **********/
+  .predictionsContainer {
+    padding: 0px;
+    border-radius: 10px;
+  }
+
+  .predictionsContainer p {
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    height: 100px;
+  }
+
+  /* 선택진행중 */
+  .sectionTitle {
+    margin-top: 30px;
+    font-size: 15px;
+    color: #0070f3;
+    padding-bottom: 5px;
+  }
+  /* 선택불가 */
+  .sectionTitle2 {
+    margin-top: 30px;
+    color: gray;
+    font-size: 15px;
+    padding-bottom: 5px;
+  }
+  /* 경기종료 */
+  .sectionTitle3 {
+    margin-top: 30px;
+    font-size: 15px;
+    color: #e64a4a;
+    padding-bottom: 5px;
+  }
+
+  .pointLogs {
+    display: none;
+    color: #0070f3;
+    margin-left: 0px;
+    margin-top: 0px;
+    font-size: 13px;
+  }
+
+  .sectionTitledetail {
+    margin-top: 20px;
+    font-size: 10px;
+    color: #000000;
+    padding-bottom: 5px;
+  }
+
+  /********** MatchItem **********/
+  .matchItem {
+    background: #fff;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 15px;
+    position: relative;
+  }
+
+  .matchHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .matchTime {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .stadium {
+    font-size: 11px;
+    margin-left: 10px;
+  }
+
+  /* 상태 배지 */
+  .statusBadge {
+    margin-left: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 12px;
+  }
+
+  .badgeProgress {
+    background: #0070f3; /* 선택진행중 */
+  }
+
+  .badgeLocked {
+    background: gray; /* 선택불가 */
+  }
+
+  .badgeFinished {
+    background: #e64a4a; /* 경기종료 */
+  }
+
+  .matchTeams {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .teamBox {
+    justify-content: center;
+    flex: 1;
+    display: flex;
+    gap: 0px;
+  }
+
+  .teamName {
+    font-weight: bold;
+    font-size: 10px;
+    margin: 10px;
+  }
+
+  .scoreBoard {
+    justify-content: center;
+    display: flex;
+    flex: 0.5;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  /********** Choice Row **********/
+  .choiceRow {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+  }
+
+  .choiceBox {
+    flex: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    padding: 8px;
+    font-size: 10px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .choiceBox:hover {
+    transform: scale(1.03); /* 3% 확대 */
+    background-color: rgb(218, 218, 218);
+  }
+
+  .selected {
+    background-color: #ffe6b3; /* 노란빛 */
+  }
+
+  .correct {
+    font-weight: bold;
+    color: rgb(255, 0, 0);
+    background-color: #ccffc9; /* 연한 초록 */
+  }
+
+  /********** 관리자 결과 설정 **********/
+  .adminResult {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /********** Arrow Box **********/
+  .arrowBox {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    color: #0070f3;
+    font-size: 20px;
+  }
+  .arrowTitle {
+    position: absolute;
+    display: none;
+    top: 21px;
+    right: 45px;
+    font-size: 15px;
+  }
+
+  /********** 참여자 목록 (펼친 상태) **********/
+  .predictionList {
+    font-size: 10px;
+    margin-top: 10px;
+    background: #fafafa;
+    border-radius: 5px;
+    padding: 0px;
+    border: 1px solid #ddd;
+  }
+
+  /* 3컬럼 레이아웃 */
+  .predColumns {
+    display: flex;
+    gap: 10px;
+  }
+
+  .predCol {
+    flex: 1;
+    border-radius: 4px;
+    padding: 10px;
+  }
+
+  .predNicknamesWrapper {
+    flex: 1;
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px; /* 닉네임 간격 */
+    border-radius: 4px;
+    padding: 10px;
+  }
+
+  .predCol h4 {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .correctCol {
+    background: #ccffc9; /* 정답 컬럼 (경기종료 시) */
+  }
+
+  .predNickname {
+    margin: 4px 0;
+  }
+
+  /********** Admin Section **********/
+  .adminSection {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background: #f2f2f2;
+  }
+
+  .adminForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 0px;
+  }
+
+  /********** 더보기 **********/
+  .moreButton {
+    width: 100%;
+    border: 0;
+    margin-top: 10px;
+    height: 20px;
+  }
+
+  .moreButton:hover {
+    background-color: rgb(218, 218, 218);
+  }
+
+  /********** 섹션구별선 **********/
+  .sectionline {
+    width: 100%;
+    display: flex;
+    margin: 30px auto;
+    height: 2px;
+    background-color: rgb(231, 231, 231);
+  }
+}

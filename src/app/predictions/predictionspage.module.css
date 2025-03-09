@@ -38,3 +38,46 @@
 .predictionsrightSection {
   width: 30%;
 }
+
+@media (max-width: 1279px)  {  .predictionscontainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-width: 100%;
+    margin: 0 auto;
+  }
+  .infoTitle {
+    margin-left: 5px;
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    align-items: start;
+    display: flex;
+  }
+
+  .borderline {
+    height: 2px;
+    width: 60px;
+    display: flex;
+    margin-left: 5px;
+    margin-top: 3px;
+    margin-bottom: 30px;
+    background-color: rgb(192, 192, 192);
+  }
+  .predictionscontainer2 {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  .predictionsleftSection {
+    width: 100%;
+  }
+
+  .predictionsrightSection {
+    width: 100%;
+  }
+}

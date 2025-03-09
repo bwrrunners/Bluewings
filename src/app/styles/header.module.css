@@ -81,3 +81,75 @@
   border: 1px solid #0061cf;
   color: #0061cf;
 }
+
+@media (max-width: 1279px)  {  .header {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100px;
+    min-width: 100%;
+    padding: 15px 20px;
+    background: #0070f3;
+    color: white;
+  }
+  
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.subtitle {
+  margin-top: 5px;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+  .headersection {
+    font-size: 8px;
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .bannersection {
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    top: 65px;
+    display: flex;
+    font-size: 13px;
+    gap: 53px;
+    font-weight: bold;
+  }
+  .nav {
+    margin-left: 15px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .nickname {
+    display: none;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .nav button {
+    background: transparent;
+    font-size: 11px;
+    display: flex;
+    border: 1px solid white;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .nav button:hover {
+    background: linear-gradient(135deg, #fcecff 0%, #e7f3ff 100%);
+    border: 1px solid #0061cf;
+    color: #0061cf;
+  }
+}

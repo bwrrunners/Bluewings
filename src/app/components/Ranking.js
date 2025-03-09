@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import styles from "../styles/ranking.module.css";
+import LoadingSpinner from "../components/LoadingSpinner"; // 로딩 스피너 추가
 
 function assignRanks(rankData) {
   let count = 0;
@@ -28,6 +29,7 @@ function assignRanks(rankData) {
 
 export default function Ranking() {
   const [rankData, setRankData] = useState([]);
+  const [loading, setLoading] = useState(true); // 로딩 상태 추가
   const [activeTab, setActiveTab] = useState("premier");
 
   useEffect(() => {
@@ -40,6 +42,7 @@ export default function Ranking() {
       // 동률 순위 부여
       arr = assignRanks(arr);
       setRankData(arr);
+      setLoading(false); // 데이터 로딩 완료 후 false 설정
     });
 
     return () => unsub();
@@ -70,33 +73,40 @@ export default function Ranking() {
         </span>
       </div>
 
-      {activeTab === "premier" && (
-        <div className={styles.rankTableWrapper}>
-          <table className={styles.rankTable}>
-            <thead>
-              <tr>
-                <th style={{ width: "80px", textAlign: "center" }}>순위</th>
-                <th style={{ flex: 1, textAlign: "center" }}>닉네임</th>
-                <th style={{ width: "80px", textAlign: "center" }}>포인트</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rankData.map((user) => (
-                <tr key={user.id}>
-                  <td>{user.rank}</td>
-                  <td>{user.nickname}</td>
-                  <td>{user.points || 0}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      {/* 로딩 중이면 스피너 표시 */}
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          {activeTab === "premier" && (
+            <div className={styles.rankTableWrapper}>
+              <table className={styles.rankTable}>
+                <thead>
+                  <tr>
+                    <th style={{ width: "80px", textAlign: "center" }}>순위</th>
+                    <th style={{ flex: 1, textAlign: "center" }}>닉네임</th>
+                    <th style={{ width: "80px", textAlign: "center" }}>포인트</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rankData.map((user) => (
+                    <tr key={user.id}>
+                      <td>{user.rank}</td>
+                      <td>{user.nickname}</td>
+                      <td>{user.points || 0}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
 
-      {activeTab === "league" && (
-        <div className={styles.emptyData}>
-          <p>리그순위 데이터는 아직 준비되지 않았습니다.</p>
-        </div>
+          {activeTab === "league" && (
+            <div className={styles.emptyData}>
+              <p>리그순위 데이터는 아직 준비되지 않았습니다.</p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

@@ -52,10 +52,8 @@ export default function AnnouncementDetail() {
     <div className={styles.detailContainer}>
       <h1 className={styles.infoTitle}>공지사항</h1>
       <div className={styles.borderline}></div>
-
       <h2 className={styles.detailTitle}>{announce.title}</h2>
       <p className={styles.detailTime}>{timeString}</p>
-   
       {/* 여러 이미지 (imageUrls: string[]) */}
       {announce.imageUrls && Array.isArray(announce.imageUrls) && (
         <div className={styles.imageGallery}>
@@ -72,10 +70,12 @@ export default function AnnouncementDetail() {
           ))}
         </div>
       )}
-
-      <div className={styles.detailContent}>{announce.content}</div>   <Link href={`/info`} className={styles.backLink}>
-        목록으로
-      </Link>
+      <div className={styles.detailContent}>{announce.content}</div>{" "}
+      <div className={styles.backLinkSection}>
+        <Link href={`/info`} className={styles.backLink}>
+        &#60;목록&#62;
+        </Link>
+      </div>
     </div>
   );
 }

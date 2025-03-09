@@ -467,7 +467,7 @@ export default function Predictions() {
       </span>{" "}
       <span>
         <Link href="/admin/pointLogs" className={styles.pointLogs}>
-          포인트 업데이트 현황 보러가기
+        &#60;포인트 업데이트 현황 보러가기&#62;
         </Link>
       </span>
       {finished.length === 0 ? (
@@ -559,6 +559,7 @@ function MatchItem({
         <div className={styles.teamBox}>
           {match.homeLogo && (
             <Image
+              className={styles.logo}
               src={match.homeLogo}
               alt="home logo"
               width={60}
@@ -581,6 +582,7 @@ function MatchItem({
           <span className={styles.teamName}>{match.awayTeam}</span>
           {match.awayLogo && (
             <Image
+              className={styles.logo}
               src={match.awayLogo}
               alt="away logo"
               width={60}

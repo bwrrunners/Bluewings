@@ -58,8 +58,8 @@ export default function Header() {
             <Link href="/info" className={styles.banner}>
               공지사항
             </Link>{" "}
-            <Link href="/bluewings" className={styles.banner}>
-              블루윙즈
+            <Link href="/point" className={styles.banner}>
+              포인트순위
             </Link>{" "}
             <Link href="/suwonsamsung" className={styles.banner}>
               팀 소개
