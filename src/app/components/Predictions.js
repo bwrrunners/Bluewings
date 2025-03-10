@@ -467,7 +467,7 @@ export default function Predictions() {
       </span>{" "}
       <span>
         <Link href="/admin/pointLogs" className={styles.pointLogs}>
-        &#60;포인트 업데이트 현황 보러가기&#62;
+        포인트 업데이트 현황 보러가기&rarr;
         </Link>
       </span>
       {finished.length === 0 ? (

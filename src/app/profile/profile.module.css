@@ -63,6 +63,7 @@
 }
 
 .titlesection {
+  justify-content: space-between;
   margin-bottom: 30px;
   display: flex;
 }
@@ -90,7 +91,6 @@
 
 .saveButton {
   display: flex;
-  margin-left: 730px;
   padding: 8px 15px;
   background: #0070f3;
   color: white;
@@ -193,7 +193,8 @@
   display: flex;
 }
 
-@media (max-width: 1279px)  {  .pageContainer {
+@media (max-width: 1279px) {
+  .pageContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -258,9 +259,14 @@
   }
   .titlesection h2 {
     font-size: 20px;
-    display: none;
   }
-
+  .titlesection {
+    justify-content: space-between;
+    margin-bottom: 30px;
+    display: flex;
+    padding-right: 20px;
+    padding-top: 20px;
+  }
   .fieldRow {
     display: flex;
     margin-bottom: 15px;
@@ -284,20 +290,6 @@
     border-radius: 6px;
   }
 
-  .saveButton {
-    display: flex;
-    position: absolute;
-    margin-top: 255px;
-    margin-left: 250px;
-    justify-content: right;
-    font-size: 11px;
-    padding: 8px 15px;
-    background: #0070f3;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
   .saveButton:hover {
     background: #005bb5;
   }
@@ -343,7 +335,6 @@
     margin-right: 30px;
     justify-content: center;
     display: flex;
-
   }
   .addPlayerForm {
     display: flex;

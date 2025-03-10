@@ -33,13 +33,15 @@
 
 .predictionsleftSection {
   width: 70%;
+  margin-bottom: 40px;
 }
 
 .predictionsrightSection {
   width: 30%;
 }
 
-@media (max-width: 1279px)  {  .predictionscontainer {
+@media (max-width: 1279px) {
+  .predictionscontainer {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -78,6 +80,7 @@
   }
 
   .predictionsrightSection {
+    display: none;
     width: 100%;
   }
 }

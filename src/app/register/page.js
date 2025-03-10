@@ -3,17 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { auth, db } from "../firebase";
-import {
-  createUserWithEmailAndPassword
-} from "firebase/auth";
-import {
-  doc,
-  setDoc,
-  getDocs,
-  collection,
-  query,
-  where
-} from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc, getDocs, collection, query, where } from "firebase/firestore";
 import styles from "./register.module.css";
 
 export default function Register() {
@@ -28,33 +19,39 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // 제출 중 여부
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return; // 이미 제출 중이면 무시
+    setIsSubmitting(true);
     setError("");
 
     // 비밀번호 확인
     if (password !== confirmPassword) {
       setError("비밀번호가 일치하지 않습니다.");
+      setIsSubmitting(false);
       return;
     }
 
     // 비밀번호 최소 8자 예시
     if (password.length < 8) {
       setError("비밀번호는 최소 8자 이상이어야 합니다.");
+      setIsSubmitting(false);
       return;
     }
 
     if (nickname.length < 2) {
       setError("닉네임은 최소 2자 이상이어야 합니다.");
+      setIsSubmitting(false);
       return;
     }
 
     if (nickname.length > 6) {
-      setError("닉네임은 최소 6자 이하이어야 합니다.");
+      setError("닉네임은 6자 이하이어야 합니다.");
+      setIsSubmitting(false);
       return;
     }
-
 
     try {
       // 이메일 중복 체크
@@ -65,6 +62,7 @@ export default function Register() {
       const emailSnap = await getDocs(emailQuery);
       if (!emailSnap.empty) {
         setError("이미 사용 중인 이메일입니다.");
+        setIsSubmitting(false);
         return;
       }
 
@@ -76,6 +74,7 @@ export default function Register() {
       const nicknameSnap = await getDocs(nicknameQuery);
       if (!nicknameSnap.empty) {
         setError("이미 사용 중인 닉네임입니다.");
+        setIsSubmitting(false);
         return;
       }
 
@@ -94,7 +93,7 @@ export default function Register() {
         name,
         studentId,
         department,
-        points: 0, // 포인트 0점으로 설정
+        points: 0, // 초기 포인트 0점
       });
 
       alert("회원가입이 완료되었습니다.");
@@ -102,6 +101,8 @@ export default function Register() {
     } catch (err) {
       console.error(err);
       setError("회원가입에 실패했습니다. 다시 시도해주세요.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -161,7 +162,9 @@ export default function Register() {
 
         {error && <p className={styles.error}>{error}</p>}
 
-        <button type="submit">회원가입</button>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "처리 중..." : "회원가입"}
+        </button>
       </form>
     </div>
   );

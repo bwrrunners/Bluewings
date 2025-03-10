@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Bluewings",
-  description: "수원삼성블루윙즈 대학 동아리 웹사이트",
+  title: "Bluewing_아주대 블루윙",
+  description: "수원삼성블루윙즈 아주대 동아리 웹사이트",
 };
 
 export default function RootLayout({ children }) {

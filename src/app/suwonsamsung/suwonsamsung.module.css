@@ -1,26 +1,24 @@
 .suwoncontainer {
-    width: 1200px;
-    height: 500px;
-    margin: 20px auto;
-    justify-content: center;
-    display: flex;
-    text-align: center;
+  width: 1200px;
+  height: 500px;
+  margin: 20px auto;
+  justify-content: center;
+  display: flex;
+  text-align: center;
 }
 
 .suwoncontainer h2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-@media (max-width: 1279px)  {    .suwoncontainer {
-        overflow-x: hidden;
-        width: 100%;
-        margin: 30px auto;
-        justify-content: center;
-        display: flex;
-    }
-    
-    
+@media (max-width: 1279px) {
+  .suwoncontainer {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 30px auto;
+    justify-content: center;
+    display: flex;
+  }
 }

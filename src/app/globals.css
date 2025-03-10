@@ -9,7 +9,8 @@
 
 /* body 기본 폰트 등 설정 */
 body {
-  font-family: 'NanumSquareNeoLight';  background-color: #fafafa;
+  font-family: 'NanumSquareNeoLight'; 
+  background-color: #fafafa;
   color: #333;
 }
 

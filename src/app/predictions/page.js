@@ -1,7 +1,7 @@
 "use client";
 
 import Predictions from "../components/Predictions";
-import Ranking from "../components/Ranking";
+import HomeRanking from "../components/HomeRanking";
 import styles from "./predictionspage.module.css"; // 홈 페이지용 css (예시)
 
 export default function PredictionPage() {
@@ -17,7 +17,7 @@ export default function PredictionPage() {
         <Predictions />
       </div>
       <div className={styles.predictionsrightSection}>
-        <Ranking />
+        <HomeRanking />
       </div>
     </div>
     </div>

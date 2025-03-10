@@ -10,7 +10,7 @@ export default function PredictionPage() {
 
   return (
     <div className={styles.suwoncontainer}>
-      {loading && <LoadingSpinner />} {/* 이미지 로드 중일 때 스피너 표시 */}
+      {/* {loading && <LoadingSpinner />} 이미지 로드 중일 때 스피너 표시 */}
       {/* <Image
         src={"/suwonsamsung.png"}
         alt="SuwonSamsung"

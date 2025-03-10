@@ -46,7 +46,7 @@ export default function Header() {
       <div className={styles.headersection}>
         <div className={styles.logoArea}>
           <Link href="/" className={styles.title}>
-            Bluewings
+            Bluewing
           </Link>
           <Link href="/" className={styles.subtitle}>
             :AJOU UNIVERSITY
