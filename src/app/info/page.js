@@ -140,7 +140,7 @@ export default function InfoPage() {
       </div>
 
       {/* 관리자 작성 폼 */}
-      {admin && (
+      {/* {admin && (
         <div className={styles.writeBox}>
           <h2>공지 작성</h2>
           <select
@@ -160,7 +160,7 @@ export default function InfoPage() {
           />
 
           {/* 여러 이미지 URL 입력 */}
-          <div className={styles.multiImageBox}>
+          {/* <div className={styles.multiImageBox}>
             <label>이미지 주소들:</label>
             <div className={styles.imageUrlList}>
               {imageUrls.map((url, idx) => (
@@ -180,9 +180,9 @@ export default function InfoPage() {
             <button onClick={handleAddImageUrl} className={styles.addImageBtn}>
               추가
             </button>
-          </div>
+          </div> */}
 
-          <textarea
+          {/* <textarea
             placeholder="내용"
             value={content}
             onChange={(e) => setContent(e.target.value)}
@@ -193,7 +193,7 @@ export default function InfoPage() {
             등록
           </button>
         </div>
-      )}
+      )} */}
 
       {/* 공지 리스트 */}
       <div className={styles.tableWrapper}>

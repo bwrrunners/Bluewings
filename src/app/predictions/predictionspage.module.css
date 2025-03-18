@@ -2,7 +2,8 @@
   display: flex;
   gap: 20px;
   width: 1200px;
-  min-width: 1000px;
+  min-width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .infoTitle {
@@ -26,7 +27,6 @@
 .predictionscontainer2 {
   width: 1200px;
   max-width: 1200px;
-  padding: 20px;
   min-width: 1200px;
   margin: 0 auto;
 }

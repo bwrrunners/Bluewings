@@ -4,8 +4,16 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc, getDocs, collection, query, where } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  getDocs,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
 import styles from "./register.module.css";
+import { Timestamp } from "firebase/firestore"; // Firestore의 Timestamp 사용
 
 export default function Register() {
   const router = useRouter();
@@ -94,6 +102,7 @@ export default function Register() {
         studentId,
         department,
         points: 0, // 초기 포인트 0점
+        createdAt: Timestamp.fromDate(new Date()),
       });
 
       alert("회원가입이 완료되었습니다.");

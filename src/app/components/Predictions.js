@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import Image from "next/image";import { useRouter } from "next/navigation";
+
 import { auth, db } from "../firebase";
 import Link from "next/link";
 import {
@@ -25,7 +26,6 @@ function LoadingSpinner() {
   return (
     <div className={styles.loadingSpinnerContainer}>
       <div className={styles.loadingSpinner}></div>
-      <p>로딩 중...</p>
     </div>
   );
 }
@@ -168,6 +168,7 @@ export default function Predictions() {
   const handleShowMoreFinished = () => {
     setFinishedLimit((prev) => prev + 5);
   };
+  const router = useRouter();
 
   // =============== 새 경기 추가 (관리자) ===============
   const handleAddMatch = async (e) => {
@@ -204,7 +205,8 @@ export default function Predictions() {
   // =============== 경기 선택하기 ===============
   const handleSelectChoice = async (matchId, choice) => {
     if (!user) {
-      alert("로그인이 필요합니다.");
+      alert("로그인이 필요합니다.");      router.push("/login");
+
       return;
     }
     // 이미 선택했다면 재선택 불가
@@ -331,7 +333,7 @@ export default function Predictions() {
   return (
     <div className={styles.predictionsContainer}>
       {/* 관리자: 새 경기 추가 폼 */}
-      {admin && (
+      {/* {admin && (
         <div className={styles.adminSection}>
           <h3>관리자: 새 경기 추가</h3>
           <form onSubmit={handleAddMatch} className={styles.adminForm}>
@@ -388,7 +390,7 @@ export default function Predictions() {
             <button type="submit">경기 추가</button>
           </form>
         </div>
-      )}
+      )} */}
       {/* ================== 선택진행중 ================== */}
       <span className={styles.sectionTitle}>선택진행중</span>
       <span className={styles.sectionTitledetail}>
@@ -563,7 +565,7 @@ function MatchItem({
               src={match.homeLogo}
               alt="home logo"
               width={60}
-              height={70}
+              height={60}
               unoptimized
             />
           )}
@@ -586,7 +588,7 @@ function MatchItem({
               src={match.awayLogo}
               alt="away logo"
               width={60}
-              height={70}
+              height={60}
               unoptimized
             />
           )}
@@ -654,7 +656,7 @@ function MatchItem({
       </div>
 
       {/* 관리자 결과 설정 (경기종료 전이라면) */}
-      {admin && !isFinished && (
+      {/* {admin && !isFinished && (
         <div className={styles.adminResult}>
           <label>HOME 점수</label>
           <input
@@ -682,7 +684,7 @@ function MatchItem({
           </select>
           <button onClick={() => onSetResult(match)}>결과 확정</button>
         </div>
-      )}
+      )} */}
 
       {/* 화살표 버튼 */}
       <div className={styles.arrowTitle}>참여자목록</div>

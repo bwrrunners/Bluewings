@@ -10,8 +10,8 @@
     border: 8px solid #f3f3f3; /* 연한 회색 */
     border-top: 8px solid #0070f3; /* 파란색 */
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     animation: spin 1s linear infinite;
     margin-bottom: 10px;
   }

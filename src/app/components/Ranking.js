@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import styles from "../styles/ranking.module.css";
-import LoadingSpinner from "../components/LoadingSpinner"; // 로딩 스피너 추가
+import LoadingSpinner from "../components/LoadingSpinner";
+import Image from "next/image";
 
 function assignRanks(rankData) {
   let count = 0;
@@ -15,10 +16,8 @@ function assignRanks(rankData) {
   return rankData.map((user) => {
     count += 1;
     if (user.points === previousPoints) {
-      // 동점
-      user.rank = previousRank;
+      user.rank = previousRank; // 동점자 처리
     } else {
-      // 새로운 점수
       user.rank = count;
       previousRank = count;
       previousPoints = user.points;
@@ -28,10 +27,12 @@ function assignRanks(rankData) {
 }
 
 export default function Ranking() {
-  const [rankData, setRankData] = useState([]);
-  const [loading, setLoading] = useState(true); // 로딩 상태 추가
+  const [rankData, setRankData] = useState([]); // 기존 (users 컬렉션)
+  const [leagueData, setLeagueData] = useState([]); // 새로 추가 (leagueRankings)
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("premier");
 
+  // (1) 'users' 컬렉션 → 포인트 랭킹
   useEffect(() => {
     const qRank = query(collection(db, "users"), orderBy("points", "desc"));
     const unsub = onSnapshot(qRank, (snap) => {
@@ -42,10 +43,28 @@ export default function Ranking() {
       // 동률 순위 부여
       arr = assignRanks(arr);
       setRankData(arr);
-      setLoading(false); // 데이터 로딩 완료 후 false 설정
+      setLoading(false);
     });
 
     return () => unsub();
+  }, []);
+
+  // (2) 'leagueRankings' 컬렉션 → K리그 순위
+  // 순위 기준(rank asc) 정렬
+  useEffect(() => {
+    const qLeague = query(
+      collection(db, "leagueRankings"),
+      orderBy("rank", "asc")
+    );
+    const unsubLeague = onSnapshot(qLeague, (snap) => {
+      const arr = snap.docs.map((doc) => ({
+        id: doc.id, // 문서ID(팀명)
+        ...doc.data(), // { rank, team, played, points, etc. }
+      }));
+      setLeagueData(arr);
+    });
+
+    return () => unsubLeague();
   }, []);
 
   const handleTabChange = (tab) => {
@@ -73,7 +92,7 @@ export default function Ranking() {
         </span>
       </div>
 
-      {/* 로딩 중이면 스피너 표시 */}
+      {/* 로딩 중이면 스피너 */}
       {loading ? (
         <LoadingSpinner />
       ) : (
@@ -85,7 +104,9 @@ export default function Ranking() {
                   <tr>
                     <th style={{ width: "80px", textAlign: "center" }}>순위</th>
                     <th style={{ flex: 1, textAlign: "center" }}>닉네임</th>
-                    <th style={{ width: "80px", textAlign: "center" }}>포인트</th>
+                    <th style={{ width: "80px", textAlign: "center" }}>
+                      포인트
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -100,12 +121,68 @@ export default function Ranking() {
               </table>
             </div>
           )}
-
           {activeTab === "league" && (
-            <div className={styles.emptyData}>
-              <p>리그순위 데이터는 아직 준비되지 않았습니다.</p>
+            <div className={styles.rankTableWrapper}>
+              {/* 리그순위 업데이트 버튼 */}
+
+              {/* K리그 순위 테이블 */}
+              <table className={styles.rankTable}>
+                <thead>
+                  <tr>
+                    <th>순위</th>
+                    <th>팀명</th>
+                    <th>경기수</th>
+                    <th>승점</th>
+                    <th>승</th>
+                    <th>무</th>
+                    <th>패</th>
+                    <th>득점</th>
+                    <th>실점</th>
+                    <th>득실차</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {leagueData.map((team) => {
+                    // "수원"인 경우 (team.team === "수원" or includes("수원")) 체크
+                    const isSuwon = team.team.includes("수원");
+                    // (정확히 "수원"만이면 === "수원" 쓰면 됨)
+
+                    // 행에 적용할 클래스
+                    // 만약 isSuwon이면 highlightSuwon, 아니면 아무것도 없음
+                    const rowClass = isSuwon ? styles.highlightSuwon : "";
+
+                    return (
+                      <tr key={team.id} className={rowClass}>
+                        <td>{team.rank}</td>
+                        <td className={styles.teamCell}>
+                          {/* 팀 로고 */}
+                          {team.teamLogo && (
+                            <Image
+                              src={team.teamLogo}
+                              alt={`${team.team} 로고`}
+                              width={20}
+                              height={20}
+                              unoptimized
+                              className={styles.teamLogo}
+                            />
+                          )}
+                          <span style={{ marginLeft: "8px" }}>{team.team}</span>
+                        </td>{" "}
+                        <td>{team.played}</td>
+                        <td>{team.points}</td>
+                        <td>{team.wins}</td>
+                        <td>{team.draws}</td>
+                        <td>{team.losses}</td>
+                        <td>{team.goalsFor}</td>
+                        <td>{team.goalsAgainst}</td>
+                        <td>{team.goalDiff}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
-          )}
+          )}{" "}
         </>
       )}
     </div>

@@ -41,6 +41,7 @@
 .bannersection {
   margin-left: 80px;
   display: flex;
+
   font-size: 15px;
   gap: 50px;
   font-weight: bold;
@@ -82,7 +83,8 @@
   color: #0061cf;
 }
 
-@media (max-width: 1279px)  {  .header {
+@media (max-width: 1279px) {
+  .header {
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -93,20 +95,20 @@
     background: #0070f3;
     color: white;
   }
-  
-.title {
-  font-size: 18px;
-  font-weight: bold;
-}
 
-.subtitle {
-  margin-top: 5px;
-  font-size: 8px;
-  font-weight: bold;
-}
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    margin-top: 5px;
+    font-size: 8px;
+    font-weight: bold;
+  }
 
   .headersection {
-    font-size: 8px;
+    font-size: 7px;
     display: flex;
     width: 100%;
     min-width: 100%;
@@ -116,12 +118,16 @@
 
   .bannersection {
     position: absolute;
-    margin-left: 0px;
-    margin-top: 0px;
+    left: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow: auto;
     top: 65px;
+    width: 90%;
     display: flex;
+    justify-content: space-between;
+    gap: 0px;
     font-size: 13px;
-    gap: 53px;
     font-weight: bold;
   }
   .nav {
@@ -138,7 +144,7 @@
 
   .nav button {
     background: transparent;
-    font-size: 11px;
+    font-size: 10px;
     display: flex;
     border: 1px solid white;
     padding: 5px 10px;

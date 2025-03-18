@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cheerio": "^1.0.0",
     "dotenv": "^16.4.7",
     "firebase": "^11.4.0",
     "firebase-admin": "^13.2.0",

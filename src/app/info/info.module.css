@@ -199,7 +199,8 @@
   overflow-y: auto; /* 세로 스크롤 */
 }
 
-@media (max-width: 1279px)  {  .infoContainer {
+@media (max-width: 1279px) {
+  .infoContainer {
     max-width: 100%;
     width: 100%;
     font-size: 13px;
@@ -323,40 +324,8 @@
     font-size: 10px;
     text-align: center;
   }
-  .noticeTable td:nth-child(3) {
-    white-space: nowrap; /* 줄바꿈 방지 */
-    overflow: hidden; /* 넘친 텍스트 숨김 */
-    text-overflow: ellipsis; /* ... 표시 */
-    max-width: 150px; /* 최대 너비 설정 (원하는 크기로 조정) */
-  }
 
-  .noticeTable th:nth-child(4) {
-    display: none;
-  }
-  .noticeTable td:nth-child(4) {
-    display: none;
-  }
 
-  .noticeTable td:nth-child(1) {
-    width: 70px;
-  }
-  .noticeTable th:nth-child(1) {
-    width: 70px;
-  }
-
-  .noticeTable td:nth-child(2) {
-    width: 70px;
-  }
-  .noticeTable th:nth-child(2) {
-    width: 70px;
-  }
-
-  .noticeTable td:nth-child(5) {
-    width: 140px;
-  }
-  .noticeTable th:nth-child(5) {
-    width: 140px;
-  }
 
   .noticeRow:hover {
     background: #fafafa;
@@ -369,7 +338,7 @@
   }
 
   .backLink {
-    font-size: 13px;
+    font-size: 10px;
     margin-top: 50px;
     display: flex;
     color: #000000;
@@ -387,18 +356,18 @@
   .detailContainer {
     max-width: 100%;
     width: 100%;
-    font-size: 13px;
+    font-size: 10px;
     margin: 20px auto;
     padding: 20px;
   }
 
   .detailTitle {
-    font-size: 20px;
+    font-size: 13px;
     font-weight: bold;
     margin-bottom: 10px;
   }
   .detailTime {
-    font-size: 14px;
+    font-size: 11px;
     color: #888;
     margin-bottom: 20px;
   }
@@ -430,5 +399,53 @@
   .tableWrapper {
     max-height: 1000px; /* 원하는 최대 높이 */
     overflow-y: auto; /* 세로 스크롤 */
+  }
+}
+
+@media (max-width: 1279px) {
+  .noticeTable th:nth-child(3) {
+    flex: 4;    font-size: 8px;
+
+  }
+  .noticeTable td:nth-child(3) {
+    flex: 4;    font-size: 8px;
+
+
+  }
+  .noticeTable th:nth-child(4) {
+    display: none;
+  }
+  .noticeTable td:nth-child(4) {
+    display: none;
+  }.noticeTable th:nth-child(1) {
+    display: none;
+  }
+  .noticeTable td:nth-child(1) {
+    display: none;
+  }
+  .noticeTable td:nth-child(3) {
+    white-space: nowrap; /* 줄바꿈 방지 */
+    overflow: hidden; /* 넘친 텍스트 숨김 */
+    text-overflow: ellipsis; /* ... 표시 */
+  }
+  .noticeTable td:nth-child(2) {
+    flex: 1;
+    font-size: 8px;
+  }
+  .noticeTable th:nth-child(2) {
+    min-width: 40px;
+    font-size: 8px;
+  }
+  
+
+  .noticeTable td:nth-child(5) {
+    flex: 2;
+    min-width: 80px;
+    font-size: 8px;
+  }
+  .noticeTable th:nth-child(5) {
+    flex: 2;
+    min-width: 80px;
+    font-size: 8px;
   }
 }

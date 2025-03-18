@@ -10,15 +10,12 @@ import {
   collection,
   doc,
   getDoc,
-  getDocs,
   onSnapshot,
   orderBy,
   query,
   where,
 } from "firebase/firestore";
 import LoadingSpinner from "./components/LoadingSpinner";
-
-// 홈 페이지용 CSS 모듈
 import styles from "./home.module.css";
 
 /** 경기 상태를 구하는 함수 */
@@ -47,9 +44,8 @@ export default function HomePage() {
   // 공지사항 상태 (1주일 이내)
   const [announcements, setAnnouncements] = useState([]);
 
-  // 1) Firebase Auth, Firestore 구독
   useEffect(() => {
-    // 인증 상태 구독
+    // 1) 인증 상태 구독
     const unsubAuth = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
@@ -62,7 +58,7 @@ export default function HomePage() {
       }
     });
 
-    // matches 컬렉션 구독
+    // 2) matches 컬렉션 구독
     const qMatches = query(
       collection(db, "matches"),
       orderBy("matchDateTime", "asc")
@@ -76,7 +72,7 @@ export default function HomePage() {
       setLoading(false);
     });
 
-    // users 컬렉션 -> points 내림차순 구독
+    // 3) users 컬렉션 -> points 내림차순 구독
     const qUsers = query(collection(db, "users"), orderBy("points", "desc"));
     const unsubUsers = onSnapshot(qUsers, (snapshot) => {
       const rankData = snapshot.docs.map((doc) => ({
@@ -86,7 +82,7 @@ export default function HomePage() {
       setUsersRank(rankData);
     });
 
-    // 2) Firestore "announcements" 구독 (1주일 이내 공지사항)
+    // 4) Firestore "announcements" 구독 (1주일 이내 공지사항)
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
     const qAnnouncements = query(
@@ -114,10 +110,17 @@ export default function HomePage() {
     return <LoadingSpinner />;
   }
 
-  // 3) "선택진행중"인 경기만 필터링
-  const inProgressMatches = matches.filter(
-    (m) => getMatchStatus(m) === "선택진행중"
-  );
+  // ────────── 2주 이내(14일 이내)인 '선택진행중' 경기만 필터링 ──────────
+  const now = new Date();
+  const twoWeeksLater = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000); // 14일 후
+
+  const inProgressMatches = matches.filter((m) => {
+    // 1) 경기 상태가 "선택진행중"인지?
+    if (getMatchStatus(m) !== "선택진행중") return false;
+    // 2) 경기일이 2주 뒤까지만?
+    const matchDate = m.matchDateTime.toDate();
+    return matchDate <= twoWeeksLater;
+  });
 
   return (
     <div className={styles.container2}>
@@ -129,53 +132,56 @@ export default function HomePage() {
           height={500}
         />
       </div>
+
       <div className={styles.container}>
         {/* 왼쪽 섹션 */}
         <div className={styles.leftSection}>
           <div className={styles.eventsection}>
-            <h2>선택진행 경기</h2>
+            <h2>이벤트</h2>
             <Link href="/predictions">
               <h3>더보기 &rarr;</h3>
             </Link>
           </div>
+
           <div className={styles.cardsection}>
             {inProgressMatches.length === 0 ? (
-              <p>현재 선택진행중인 경기가 없습니다.</p>
+              <p>현재 선택진행중인 (2주 이내) 경기가 없습니다.</p>
             ) : (
               inProgressMatches.map((match) => (
                 <Link href="/predictions" key={match.id}>
-                  {/* 카드 전체를 Link로 감싸기 */}
                   <div className={styles.matchCard}>
                     <div className={styles.matchstatus}>
                       <div className={styles.matchTime}>
-                        {match.matchDateTime?.toDate().toLocaleString("ko-KR", {
-                          month: "2-digit",
-                          day: "2-digit",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
+                        {match.matchDateTime
+                          ?.toDate()
+                          .toLocaleString("ko-KR", {
+                            month: "2-digit",
+                            day: "2-digit",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
                       </div>
                       <div className={styles.matchStatus}>선택진행중</div>
                     </div>
                     <div className={styles.matchTeams}>
-                      {match.awayLogo && (
+                      {match.homeLogo && (
                         <Image
                           className={styles.logo}
                           src={match.homeLogo}
                           alt="home logo"
                           width={40}
-                          height={55}
+                          height={40}
                           unoptimized
                         />
                       )}
-                      {match.homeTeam} vs {match.awayTeam}{" "}
+                      {match.homeTeam} vs {match.awayTeam}
                       {match.awayLogo && (
                         <Image
                           className={styles.logo}
                           src={match.awayLogo}
                           alt="away logo"
                           width={40}
-                          height={55}
+                          height={40}
                           unoptimized
                         />
                       )}
@@ -185,6 +191,7 @@ export default function HomePage() {
               ))
             )}
           </div>
+
           <div className={styles.sectionh}></div>
           <div className={styles.eventsection}>
             <h2>공지사항</h2>
@@ -192,9 +199,8 @@ export default function HomePage() {
               <h3>더보기 &rarr;</h3>
             </Link>
           </div>
-          {/* 공지사항 부분: 1주일 이내 등록된 공지사항을 카드 형식으로 표시 */}
+          {/* 공지사항: 1주일 이내 등록된 것만 표시 */}
           <div className={styles.announcementSection}>
-            {" "}
             {announcements.length === 0 ? (
               <p>공지사항이 없습니다.</p>
             ) : (
@@ -208,7 +214,6 @@ export default function HomePage() {
                   return (
                     <Link href={`/info/${ann.id}`} key={ann.id}>
                       <div className={styles.announcementCard}>
-                        {/* 제목의 일부 */}
                         <h3>
                           {ann.title.length > 30
                             ? ann.title.substring(0, 30) + "..."
@@ -225,16 +230,16 @@ export default function HomePage() {
         </div>
 
         <div className={styles.sectionh2}></div>
-        
+
+        {/* 오른쪽 섹션 */}
         <div className={styles.rightSection}>
-          {" "}<div className={styles.eventsection2}>
+          <div className={styles.eventsection2}>
             <h2>랭킹</h2>
             <Link href="/point">
               <h3>더보기 &rarr;</h3>
             </Link>
           </div>
-          
-          {/* 오른쪽 섹션: 포인트 랭킹 */}
+          {/* 포인트 랭킹 */}
           <HomeRanking />
         </div>
       </div>

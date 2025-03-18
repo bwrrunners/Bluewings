@@ -27,7 +27,15 @@
   color: #000;
   border-bottom: 3px solid #ffae00; /* 탭 선택 시 강조선 */
 }
-
+.teamLogo {
+  vertical-align: middle;
+  /* 원하는 스타일 */
+}
+.teamCell {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
 /* 빈 데이터 */
 .emptyData {
   font-size: 14px;
@@ -53,10 +61,15 @@
 }
 
 .rankTable th {
-  text-align: left;
+  text-align: center;
   padding: 10px;
 }
-
+/* 예: ranking.module.css */
+.rankTable tr.highlightSuwon {
+  background-color: #ffebcc;
+  font-weight: bold;
+  /* 원하는 스타일로 변경 가능 */
+}
 .rankTable td {
   padding: 10px;
   border-bottom: 1px solid #e2e2e2;
@@ -121,7 +134,6 @@
   }
 
   .rankTable th {
-    text-align: left;
     padding: 10px;
   }
 
@@ -131,5 +143,26 @@
   }
   .rankTableWrapper {
     overflow-y: auto; /* 세로 스크롤 활성화 */
+  }
+
+  .rankTable th:nth-child(8) {
+    display: none;
+  }
+  .rankTable td:nth-child(8) {
+    display: none;
+  }
+
+  .rankTable th:nth-child(9) {
+    display: none;
+  }
+  .rankTable td:nth-child(9) {
+    display: none;
+  }
+
+  .rankTable th:nth-child(10) {
+    display: none;
+  }
+  .rankTable td:nth-child(10) {
+    display: none;
   }
 }

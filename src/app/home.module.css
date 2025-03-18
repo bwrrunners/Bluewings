@@ -68,7 +68,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2개 열 */
-  gap: 40px; /* 카드 간격 */
+  gap: 16px; /* 카드 간격 */
 }
 .matchCard {
   display: flex;
@@ -211,8 +211,10 @@
   }
 
   .mainphotosection {
+    display: none;
     justify-content: center;
-    height: auto;
+    align-items: center;
+    max-height: 200px;
     max-width: 100%; /* 부모 요소의 최대 크기를 유지 */
     margin: 0 auto;
     width: 100%;
@@ -333,6 +335,10 @@
     /* 최대 넓이 해제하여 카드들이 자연스럽게 가로 넘치도록 */
     max-width: 100%;
     margin-top: 10px;
+  }
+
+  .announcementCards p {
+    margin-left: 10px;
   }
   .announcementCards::-webkit-scrollbar {
     display: none;

@@ -1,0 +1,296 @@
+.pageContainer {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.noEvents {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+.eventCard {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background-color: #fafafa;
+}
+.eventHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.headerLeft {
+  display: flex;
+  flex-direction: row; /* or column, as you prefer */
+  align-items: baseline;
+}
+.headerRight {
+  font-size: 13px;
+}
+.eventTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.eventDates {
+  margin-left: 5px;
+  font-size: 12px;
+  color: #777;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.voteInfo {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.disabledMsg {
+  color: red;
+  font-weight: bold;
+}
+
+.picksArea {
+  margin-bottom: 12px;
+}
+
+.myPicks {
+  margin-top: 4px;
+}
+
+.noPick {
+  color: #666;
+}
+
+.pickItem {
+  font-size: 13px;
+  display: inline-block;
+  background-color: #0070f3;
+  padding: 4px 6px;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 8px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  margin-left: 6px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.playersList {
+  font-size: 14px;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+
+.playerBtn {
+  max-width: 32%;
+  min-width: 32%;
+  margin: 4px 6px 0 0;
+  background-color: #ffffff;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.playerBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.playerBtn:hover {
+  color: white;
+  background-color: #0070f3; 
+}
+
+/* 정답 선수/픽 */
+.correctPick {
+  background-color: #b2f5b2 !important; /* 연한 초록색 */
+}
+.submitarea {
+  justify-content: right;
+  font-size: 13px;
+  display: flex;
+  margin: 0 auto;
+}
+.submitBtn {
+  background-color: #0070f3;
+  color: #fff;
+  display: flex;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.submitBtn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1279px) {
+  .pageContainer {
+    width: 100%;
+    padding: 0px;
+    margin: 0 auto;
+  }
+
+  .noEvents {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 10px;
+  }
+
+  .eventCard {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fafafa;
+  }
+
+  .eventHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .headerLeft {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column; /* or column, as you prefer */
+    align-items: baseline;
+  }
+  .headerRight {
+    font-size: 13px;
+  }
+
+  .eventTitle {
+    margin: 0;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .eventDates {
+    margin-top: 3px;
+    margin-left: 0px;
+    font-size: 8px;
+    color: #777;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .voteInfo {
+    margin-top: 15px;
+    margin-bottom: 12px;
+    font-size: 11px;
+  }
+
+  .disabledMsg {
+    color: red;
+    font-weight: bold;
+  }
+
+  .picksArea {
+    font-size: 12px;
+
+    margin-bottom: 12px;
+  }
+
+  .myPicks {
+    margin-top: 4px;
+  }
+
+  .noPick {
+    font-size: 10px;
+    color: #666;
+  }
+
+  .pickItem {
+    font-size: 10px;
+    display: inline-block;
+    background-color: #0070f3;
+    color: white;
+    padding: 5px;
+    margin-top: 10px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+  }
+
+  .removeBtn {
+    background: none;
+    border: none;
+    font-weight: bold;
+    margin-left: 6px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+
+  .playersList {
+    max-height: 100px;
+    overflow-y: auto;
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+
+  .playerBtn {
+    max-width: 46%;
+    min-width: 46%;
+    justify-content: center;
+    margin: 4px 6px 0 0;
+    background-color: #ffffff;
+    border: 1px solid #999;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+  .playerBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .playerBtn:hover {
+    color: white;
+    background-color: #0070f3;
+  }
+
+  /* 정답 선수/픽 */
+  .correctPick {
+    background-color: #b2f5b2 !important; /* 연한 초록색 */
+  }
+
+  .headerRight button {
+    background-color: #0070f3;
+    color: #fff;
+    border: none;
+    display: flex;
+    font-size: 10px;
+    margin-left: 0px;
+    justify-content: right;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .submitBtn:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+}

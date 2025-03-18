@@ -1,0 +1,109 @@
+.adminContainer {
+    text-align: center;
+    justify-content: center;
+    width: 50%;    
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .adminTitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .sectionBox {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+  }
+  
+  .sectionBox h2 {
+    margin-top: 0;
+  }
+  
+  .updateButton {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .writeBox {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .selectBox,
+  .inputField,
+  .textArea {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .textArea {
+    min-height: 100px;
+  }
+  
+  .multiImageBox {
+    border: 1px dashed #999;
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .imageUrlList {
+    margin-bottom: 8px;
+  }
+  
+  .imageUrlItem {
+    background-color: #eee;
+    display: inline-block;
+    margin-right: 4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+  
+  .noticeTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .noticeTable th,
+  .noticeTable td {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 8px;
+  }
+  
+  .noticeRow:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .createButton,
+  .addImageBtn {
+    background-color: #333;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+    border-radius: 4px;
+  }
+  
+@media (max-width: 1279px) {
+    .adminContainer {
+        text-align: center;
+        justify-content: center;
+        width: 90%;    
+        font-size: 13px;
+        min-width: 90%;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+}
